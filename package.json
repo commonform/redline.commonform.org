@@ -1,14 +1,6 @@
 {
-  "name": "commonform-redline",
-  "version": "1.0.2",
-  "description": "",
-  "main": "dist/editor.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "files": [
-    "dist"
-  ],
+  "name": "redline.commonform.org",
+  "private": true,
   "dependencies": {
     "codemirror": "^5.53.2",
     "jquery": "^3.5.0",
@@ -40,7 +32,6 @@
   },
   "scripts": {
     "build": "rm -rf ./dist && webpack --config ./webpack.prod.js",
-    "start": "webpack-dev-server -w --debug --progress --colors --config ./webpack.dev.js --content-base ./dist --inline --hot --host 0.0.0.0",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server -w --debug --progress --colors --config ./webpack.dev.js --content-base ./dist --inline --hot --host 0.0.0.0"
   }
 }
