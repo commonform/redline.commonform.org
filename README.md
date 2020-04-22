@@ -1,18 +1,3 @@
-# commonform-redline
+# redline.commonform.org
 
-## Install
-
-```bash
-npm install commonform-redline
-```
-
-## Build
-
-```bash
-npm run build
-```
-
-## Run
-```
-npm start
-```
+compare legal documents with [Mergely](https://mergely.com)
