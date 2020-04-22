@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" /><title>Redline online</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Redline your documents online" />
+	<meta name="keywords" content="redline,merge,compare,comparison,difference,file,text,patch,online" />
+	<meta name="author" content="Jamie Peabody" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="canonical" href="https://commonform.org" />
+	<link href='https://commonform.org/fonts.css' rel='stylesheet' type='text/css' />
+
+	<script type="text/javascript">
+		var url, debug, key;
+		try {
+			url = new URL(window.location);
+		} catch (ex) {
+			url = window.location;
+		}
+	</script>
+</head>
+<body style="visibility:hidden">
+	<a href="/"><div id="banner"></div></a>
+	
+	<!-- menu -->
+	<ul id="main-menu" style="display:none">
+		<li accesskey="l">
+			Left
+			<ul>
+				<li id="edit-left-undo" accesskey="z" data-hotkey="Ctrl+Z" data-icon="icon-undo">Undo</li>
+				<li id="edit-left-redo" accesskey="y" data-hotkey="Ctrl+Y" data-icon="icon-redo">Redo</li>
+				<li id="edit-left-find">Find</li>
+				<li class="separator"></li>
+				<li id="edit-left-merge-right" data-hotkey="Alt+&rarr;" data-icon="icon-arrow-right-v">Merge change right</li>
+				<li id="edit-left-merge-right-file" data-icon="icon-arrow-right-vv">Merge file right</li>
+				<li id="edit-left-readonly">Read only</li>
+				<li class="separator"></li>
+				<li id="edit-left-clear">Clear</li>
+			</ul>
+		</li>
+		<li accesskey="r">
+			Right
+			<ul>
+				<li id="edit-right-undo" accesskey="z" data-hotkey="Ctrl+Z" data-icon="icon-undo">Undo</li>
+				<li id="edit-right-redo" accesskey="y" data-hotkey="Ctrl+Y" data-icon="icon-redo">Redo</li>
+				<li id="edit-right-find">Find</li>
+				<li class="separator"></li>
+				<li id="edit-right-merge-left" data-hotkey="Alt+&larr;" data-icon="icon-arrow-left-v">Merge change left</li>
+				<li id="edit-right-merge-left-file" data-icon="icon-arrow-left-vv">Merge file left</li>
+				<li id="edit-right-readonly">Read only</li>
+				<li class="separator"></li>
+				<li id="edit-right-clear">Clear</li>
+			</ul>
+		</li>
+		<li accesskey="v">
+			View
+			<ul>
+				<li id="view-swap" data-icon="icon-swap">Swap sides</li>
+				<li class="separator"></li>
+				<li id="view-change-prev" data-hotkey="Alt+&uarr;" title="View previous change">View prev change</li>
+				<li id="view-change-next" data-hotkey="Alt+&darr;" title="View next change">View next change</li>
+			</ul>
+		</li>
+		<li accesskey="o">
+			Options
+			<ul>
+				<li id="options-wrap">Wrap lines</li>
+				<li id="options-ignorews">Ignore white space</li>
+				<li id="options-ignorecase">Ignore case</li>
+				<li class="separator"></li>
+				<li id="options-viewport" title="Improves performance for large files">Enable viewport</li>
+				<li id="options-sidebars" title="Improves performance for large files">Enable side bars</li>
+				<li id="options-linenumbers">Enable line numbers</li>
+			</ul>
+		</li>
+	</ul>
+
+	<!-- toolbar -->
+	<ul id="toolbar">
+		<li id="tb-view-change-prev" data-icon="icon-arrow-up" title="Previous change">Previous change</li>
+		<li id="tb-view-change-next" data-icon="icon-arrow-down" title="Next change">Next change</li>
+		<li class="separator"></li>
+		<li id="tb-edit-right-merge-left" data-icon="icon-arrow-left-v" title="Merge change left">Merge change left</li>
+		<li id="tb-edit-left-merge-right" data-icon="icon-arrow-right-v" title="Merge change right">Merge change right</li>
+		<li id="tb-view-swap" data-icon="icon-swap" title="Swap sides">Swap sides</li>
+	</ul>
+
+	<!-- dialog upload -->
+	<div id="dialog-upload" title="File import" style="display:none">
+		<div class="tabs">
+			<ul>
+				<li><a href="#tabs-1">Import File</a></li>
+				<li><a href="#tabs-2">Import URL</a></li>
+			</ul>
+			<div id="tabs-1">
+				<p>
+					Files are imported directly into your browser.  They are <em>not</em> uploaded to the server.
+				</p>
+				<label for="file-lhs">Left file</label> <input id="file-lhs" style="display:inline-block" type="file"><div id="file-lhs-progress"><div class="progress-label">Loading...</div></div><br />
+				<label for="file-rhs">Right file</label> <input id="file-rhs" style="display:inline-block" type="file"><div id="file-rhs-progress"><div class="progress-label">Loading...</div></div><br />
+			</div>
+			<div id="tabs-2">
+				<p>
+					Files are imported directly into your browser.  They are <em>not</em> uploaded to the server.
+				</p>
+				<label for="url-lhs">Left URL</label> <input id="url-lhs" type="input" size="40"><div id="file-lhs-progress"><div class="progress-label">Loading...</div></div><br />
+				<label for="url-rhs">Right URL</label> <input id="url-rhs" type="input" size="40"><div id="file-rhs-progress"><div class="progress-label">Loading...</div></div><br />
+			</div>
+		</div>
+	</div>
+	
+	<!-- dialog colors -->
+	<div id="dialog-colors" title="Mergely Color Settings" style="display:none">
+		<div id="picker" style="float: right;"></div>
+		<fieldset>
+			<legend>Changed</legend>
+			<label for="c-border">Border:</label><input type="text" id="c-border" name="c-border" class="colorwell" />
+			<br />
+			<label for="c-bg">Background:</label><input type="text" id="c-bg" name="c-bg" class="colorwell" />
+			<br />
+		</fieldset>
+		<fieldset>
+			<legend>Added</legend>
+			<label for="a-border">Border:</label><input type="text" id="a-border" name="a-border" class="colorwell" />
+			<br />
+			<label for="a-bg">Background:</label><input type="text" id="a-bg" name="a-bg" class="colorwell" />
+			<br />
+		</fieldset>
+		<fieldset>
+			<legend>Deleted</legend>
+			<label for="d-border">Border:</label><input type="text" id="d-border" name="d-border" class="colorwell" />
+			<br />
+			<label for="d-bg">Background:</label><input type="text" id="d-bg" name="d-bg" class="colorwell" />
+			<br />
+		</fieldset>
+	</div>
+	
+	<!-- find -->
+	<div class="find">
+		<input type="text" />
+		<button class="find-prev"><span class="icon icon-arrow-up"></span></button>
+		<button class="find-next"><span class="icon icon-arrow-down"></span></button>
+		<button class="find-close"><span class="icon icon-x-mark"></span></button>
+	</div>
+	
+	<!-- editor -->
+	<div style="position: absolute;top: 73px;bottom: 10px;left: 5px;right: 5px;overflow: hidden;padding-bottom: 2px;">
+		<div id="mergely">
+		</div>
+	</div>
+</body>
+</html>

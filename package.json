@@ -1,0 +1,46 @@
+{
+  "name": "commonform-redline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/editor.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "codemirror": "^5.53.2",
+    "jquery": "^3.5.0",
+    "mergely": "^4.0.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "@webpack-cli/init": "^0.3.0",
+    "babel-loader": "^8.0.4",
+    "codemirror": "^5.50.2",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "farbtastic": "git+https://github.com/mattfarina/farbtastic.git",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "mergely": "^4.0.10",
+    "style-loader": "^0.23.1",
+    "tipsy": "^1.0.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist && webpack --config ./webpack.prod.js",
+    "start": "webpack-dev-server -w --debug --progress --colors --config ./webpack.dev.js --content-base ./dist --inline --hot --host 0.0.0.0",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
