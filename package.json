@@ -27,11 +27,10 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^0.6.2",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-cli": "^3.1.2"
   },
   "scripts": {
-    "build": "rm -rf ./dist && webpack --config ./webpack.prod.js",
+    "build": "rm -rf ./dist && NODE_OPTIONS=--openssl-legacy-provider webpack --config ./webpack.prod.js",
     "start": "webpack-dev-server -w --debug --progress --colors --config ./webpack.dev.js --content-base ./dist --inline --hot --host 0.0.0.0"
   }
 }
