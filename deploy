@@ -3,4 +3,4 @@ set -e
 SITE=redline.commonform.org
 [ -d node_modules ] || npm ci
 npm run build
-rsync -4 -a --delete dist/ "$SITE:/var/www/$SITE/"
+rsync -a --delete dist/ "$SITE:/var/www/$SITE/"
