@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 SITE=redline.commonform.org
-[ -d node_modules ] || npm ci
+[ -d node_modules ] || npm install --legacy-peer-dep
 npm run build
 rsync -a --delete dist/ "$SITE:/var/www/$SITE/"
